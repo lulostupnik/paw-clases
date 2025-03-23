@@ -55,7 +55,18 @@
       <version>${project.version}</version>
       <scope> runtime </scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+    </dependency>
+<!--@TODO preguntar  Las ultimas dos depenencias las pongo porque sino no puedo hacer lo de DataSource en webConfig. Como es que hacer que el dataSource sea de webapp y no de persistance algo que mantiene la separacion de capas?-->
   </dependencies>
+
 
   <build>
     <finalName>webapp</finalName>

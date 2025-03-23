@@ -1,23 +1,21 @@
 package ar.edu.itba.paw.models;
 
 public class User {
-    private final String email;
-    private String password;
+    private final String username;
+    private final long userId;
 
-    public User (final String email, final String password ){
-        this.email = email;
-        this.password = password;
+    public User (final String username, final long userId ){
+        this.username = username;
+        this.userId = userId;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public String getPassword() {
-        return password;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+
 }

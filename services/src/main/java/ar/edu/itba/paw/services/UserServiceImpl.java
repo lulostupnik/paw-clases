@@ -16,7 +16,13 @@ public class UserServiceImpl implements UserService {
         this.userDao = userDao;
     }
     @Override
-    public User createUser(String email, String password) {
-        return userDao.create(email, password);
+    public User create(final String username) {
+        return userDao.create(username);
     }
+
+    @Override
+    public User findById(final long id) {
+        return userDao.findById(id);
+    } //@TODO esto no lo pone en la guia, pero asumo que va.
+
 }

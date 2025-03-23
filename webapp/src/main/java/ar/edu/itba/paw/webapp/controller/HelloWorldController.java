@@ -18,30 +18,15 @@ public class HelloWorldController {
         this.us = us;
     }
 
-
     @RequestMapping("/")
-    public ModelAndView helloWorld() {
-        final ModelAndView mav = new ModelAndView("helloworld/index");
-        mav.addObject("user", us.createUser("paw@itba.edu.ar", "mysecret"));
-        return mav;
+    public ModelAndView index(@RequestParam(value = "userId", required = true) final int id) {
+            final ModelAndView mav = new ModelAndView("/helloworld/index");
+            mav.addObject("user", us.findById(id));
+            return mav;
     }
-
-/*    @RequestMapping("/register")
-    public ModelAndView register() {
-        return new ModelAndView("helloworld/register");*/
-@RequestMapping(value = "/register", method = RequestMethod.POST)
-public ModelAndView register(@RequestParam(value = "email", required = true) final String email,
-                             @RequestParam(value = "password", required = true) final String password) {
-    final User user = us.createUser(email, password);
-
-    final ModelAndView mav = new ModelAndView("helloworld/index");
-    mav.addObject("user", user);
-    return mav;
-}
-
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public ModelAndView registerForm() {
-        return new ModelAndView("helloworld/register");
-    }
-
+    @RequestMapping("/create")
+    public ModelAndView create(@RequestParam(value = "name", required = true) final String username) {
+            final User u = us.create(username);
+            return new ModelAndView("redirect:/?userId=" + u.getUserId());
+            }
 }
